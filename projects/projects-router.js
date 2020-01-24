@@ -45,6 +45,17 @@ router.post("/resources", (req, res) => {
     });
 });
 
+router.get("/tasks", (req, res) => {
+  Projects.getTasks()
+    .then(tasks => {
+      res.json(tasks);
+    })
+    .catch(err => {
+      console.log("hello");
+      res.status(500).json({ message: "could not get tasks" });
+    });
+});
+
 router.post("/tasks", (req, res) => {
   Projects.addTask(req.body)
     .then(id => {

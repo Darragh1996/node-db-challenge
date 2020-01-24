@@ -16,6 +16,13 @@ function addResource(newResource) {
   return db("resources").insert(newResource);
 }
 
+function getTasks() {
+  return db("projects")
+    .select("projects.name as project", "resources.name", "tasks.desc")
+    .innerJoin("tasks", "projects.id", "tasks.project_id")
+    .innerJoin("resources", "resources.id", "tasks.resources_id");
+}
+
 function addTask(newTask) {
   return db("tasks").insert(newTask);
 }
@@ -25,5 +32,6 @@ module.exports = {
   addProject,
   getResources,
   addResource,
+  getTasks,
   addTask
 };
