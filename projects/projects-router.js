@@ -25,4 +25,24 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/resources", (req, res) => {
+  Projects.getResources()
+    .then(resources => {
+      res.json(resources);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not get resources" });
+    });
+});
+
+router.post("/resources", (req, res) => {
+  Projects.addResource(req.body)
+    .then(id => {
+      res.json(id);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not add resource" });
+    });
+});
+
 module.exports = router;

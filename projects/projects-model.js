@@ -8,7 +8,17 @@ function addProject(newProject) {
   return db("projects").insert(newProject);
 }
 
+function getResources() {
+  return db("resources");
+}
+
+function addResource(newResource) {
+  return db("resources").insert(newResource);
+}
+
 module.exports = {
   getProjects,
-  addProject
+  addProject,
+  getResources,
+  addResource
 };
