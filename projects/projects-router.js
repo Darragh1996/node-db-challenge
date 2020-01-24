@@ -45,4 +45,14 @@ router.post("/resources", (req, res) => {
     });
 });
 
+router.post("/tasks", (req, res) => {
+  Projects.addTask(req.body)
+    .then(id => {
+      res.json(id);
+    })
+    .catch(err => {
+      res.status(500).json({ message: "could not add task" });
+    });
+});
+
 module.exports = router;

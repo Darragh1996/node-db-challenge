@@ -16,9 +16,14 @@ function addResource(newResource) {
   return db("resources").insert(newResource);
 }
 
+function addTask(newTask) {
+  return db("tasks").insert(newTask);
+}
+
 module.exports = {
   getProjects,
   addProject,
   getResources,
-  addResource
+  addResource,
+  addTask
 };
