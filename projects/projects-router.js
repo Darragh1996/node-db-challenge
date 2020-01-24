@@ -14,4 +14,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  Projects.addProject(req.body)
+    .then(ids => {
+      res.json(ids);
+    })
+    .catch(err => {
+      console.log("hello");
+      res.status(500).json({ message: "something went wrong" });
+    });
+});
+
 module.exports = router;
